@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+// App.js
+import React, { useState } from 'react';
+import LoginScreen from './components/LoginScreen.js'; // Import the LoginScreen component
+import MainScreen from './components/MainScreen.js';
 import './App.css';
 
 function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setLoggedIn(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isLoggedIn ? (
+        <MainScreen />
+      ) : (
+        <LoginScreen onLogin={handleLogin} />
+      )}
     </div>
   );
 }
