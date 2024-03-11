@@ -6,11 +6,18 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "abcjs": "^6.3.0",
     "bootstrap": "^5.3.3",
+    "musicxml": "^0.0.1",
+    "opensheetmusicdisplay": "^1.8.7",
+    "pdfjs-dist": "^4.0.379",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-pdf": "^7.7.1",
+    "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "tailwindcss": "^3.4.1",
+    "vexflow": "^4.2.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

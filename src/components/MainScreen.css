@@ -1,0 +1,10 @@
+.main-screen-container {
+    position: relative;
+    min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
+}
+
+.new-session-btn {
+    position: absolute;
+    bottom: 10px; /* Adjust this value to set the distance from the bottom */
+    right: 10px; /* Adjust this value to set the distance from the right */
+}
