@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import AudioRecorderComponent from './AudioRecorderComponent';
 
 const LocalImageViewer = () => {
+
   const [scale, setScale] = useState(1);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(null); // Use null to track which div is hovered
 
   const updateScale = () => {
     const originalWidth = 791; // Adjust as needed
@@ -21,18 +22,36 @@ const LocalImageViewer = () => {
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
-const handleOverlayClick = () => {
-  alert('Overlay clicked!');
-  // You can add more functionality here
-};
+  const handleOverlayClick = (message) => {
+    alert(`Correct your notes for ${message}`);
+    // You can add more functionality here
+  };
 
-const handleMouseEnter = () => {
-  setIsHovered(true);
-};
+  const handleMouseEnter = (index) => {
+    setIsHovered(index);
+  };
 
-const handleMouseLeave = () => {
-  setIsHovered(false);
-};
+  const handleMouseLeave = () => {
+    setIsHovered(null);
+  };
+
+  const divs = [
+    {
+      top: 163,
+      left: 53,
+      width: 150,
+      height: 94,
+      message: 'Bar 1',
+    },
+    {
+      top: 163,
+      left: 311,
+      width: 106,
+      height: 95,
+      message: 'Bar 3',
+    },
+    // Add more div configurations as needed
+  ];
 
   return (
     <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -43,97 +62,31 @@ const handleMouseLeave = () => {
           style={{ width: 'auto', maxHeight: '100vh' }}
           onLoad={updateScale} // Trigger scale update when image loads
         />
-        <div 
-          onClick={handleOverlayClick}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          style={{
-          position: 'absolute',
-          top: 164 * scale + 'px',
-          left: 54 * scale + 'px',
-          width: 148 * scale + 'px',
-          height: 92 * scale + 'px',
-          backgroundColor: isHovered ? 'rgba(233, 199, 236, 0.7)' : 'rgba(233, 199, 236, 0.5)',
-          transition: 'background-color 0.3s ease', // Add a smooth transition effect
-        }}></div>
-        <div 
-          onClick={handleOverlayClick}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          style={{
-          position: 'absolute',
-          top: 164 * scale + 'px',
-          left: 311 * scale + 'px',
-          width: 109 * scale + 'px',
-          height: 92 * scale + 'px',
-          backgroundColor: isHovered ? 'rgba(233, 199, 236, 0.7)' : 'rgba(233, 199, 236, 0.5)',
-          transition: 'background-color 0.3s ease', // Add a smooth transition effect
-        }}></div>
+        {divs.map((div, index) => (
+          <div
+            key={index}
+            onClick={() => handleOverlayClick(div.message)}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+            style={{
+              position: 'absolute',
+              top: div.top * scale + 'px',
+              left: div.left * scale + 'px',
+              width: div.width * scale + 'px',
+              height: div.height * scale + 'px',
+              backgroundColor: isHovered === index ? 'rgba(223, 189, 226, 0.7)' : 'rgba(233, 199, 236, 0.5)',
+              transition: 'background-color 0.3s ease',
+            }}
+          ></div>
+        ))}
+        <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}>
+          <AudioRecorderComponent scale={scale} />
+        </div>
       </div>
-      <AudioRecorderComponent/>
     </div>
   );
 };
 
 export default LocalImageViewer;
 
-// import React, { useEffect, useState } from 'react';
 
-// const LocalImageViewer = () => {
-//   const [scale, setScale] = useState(1);
-
-//   useEffect(() => {
-//     const updateScale = () => {
-//       const originalWidth = 791; // Adjust as needed
-//       const container = document.querySelector('.image-container');
-//       if (container) {
-//         const currentWidth = container.offsetWidth;
-//         const newScale = currentWidth / originalWidth;
-//         setScale(newScale);
-//       }
-//     };
-
-//     window.addEventListener('resize', updateScale);
-
-//     return () => window.removeEventListener('resize', updateScale);
-//   }, []);
-
-//   const handleOverlayClick = () => {
-//     alert('Overlay clicked!');
-//     // You can add more functionality here
-//   };
-
-//   return (
-//     <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-//       <div className="image-container" style={{ position: 'relative', maxHeight: '100vh' }}>
-//         {/* First div */}
-//         <div
-//           onClick={handleOverlayClick}
-//           style={{
-//             position: 'absolute',
-//             top: 164 * scale + 'px',
-//             left: 54 * scale + 'px',
-//             width: 148 * scale + 'px',
-//             height: 92 * scale + 'px',
-//             backgroundColor: 'rgba(233, 199, 236, 0.5)',
-//           }}
-//         ></div>
-
-//         {/* Add more divs as needed, each with the onClick handler */}
-//         <div
-//           onClick={handleOverlayClick}
-//           style={{
-//             position: 'absolute',
-//             top: 164 * scale + 'px',
-//             left: 311 * scale + 'px',
-//             width: 109 * scale + 'px',
-//             height: 92 * scale + 'px',
-//             backgroundColor: 'rgba(233, 199, 236, 0.5)',
-//           }}
-//         ></div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default LocalImageViewer;
