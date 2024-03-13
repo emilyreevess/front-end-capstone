@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react';
 
 const AudioRecorderComponent = () => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
-  let audioChunks = [];
+  const [audioChunks, setAudioChunks] = useState([]);
   const [recording, setRecording] = useState(false);
+  const [showAnalyze, setAnalyze] = useState(false)
   const audioElement = useRef(null);
 
   const startRecording = () => {
@@ -15,6 +16,7 @@ const AudioRecorderComponent = () => {
           if (e.data.size > 0) {
             audioChunks.push(e.data);
           }
+          setAudioChunks(audioChunks);
         };
 
         recorder.onstop = () => {
@@ -23,23 +25,6 @@ const AudioRecorderComponent = () => {
 
           audioElement.current.src = audioUrl;
           audioElement.current.controls = true;
-
-          const formData = new FormData();
-          formData.append('file', audioBlob);
-
-          const endpoint = 'http://127.0.0.1:5000/process-audio';
-
-          fetch(endpoint, {
-            method: 'POST',
-            body: formData,
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log('Audio uploaded successfully:', data);
-            })
-            .catch((error) => {
-              console.error('Error uploading audio:', error);
-            });
 
           setRecording(false);
         };
@@ -56,17 +41,42 @@ const AudioRecorderComponent = () => {
   const stopRecording = () => {
     if (mediaRecorder && mediaRecorder.state === 'recording') {
       mediaRecorder.stop();
+      setAnalyze(true)
     }
   };
+
+  const analyze = () => {
+
+    const audioBlob = new Blob(audioChunks);
+    const formData = new FormData();
+    formData.append('file', audioBlob);
+
+    const endpoint = 'http://127.0.0.1:5000/process-audio';
+
+    fetch(endpoint, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Audio uploaded successfully:', data);
+      })
+      .catch((error) => {
+        console.error('Error uploading audio:', error);
+      });
+
+      setAudioChunks([]);
+      setAnalyze(false)
+  }
 
   return (
     <div>
       <button onClick={startRecording} disabled={recording}>Start Recording</button>
       <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>
       <audio ref={audioElement} controls />
+      {showAnalyze && <button onClick={analyze}>Analyze Recording</button>}
     </div>
   );
 };
 
 export default AudioRecorderComponent;
-

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AudioRecorderComponent from './AudioRecorderComponent';
+import UploadFile from './UploadFile';
 
 const LocalImageViewer = () => {
 
@@ -82,6 +83,9 @@ const LocalImageViewer = () => {
         <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}>
           <AudioRecorderComponent scale={scale} />
         </div>
+      </div>
+      <div style={{ position: 'absolute', bottom: '20px', left: '5%' }}>
+          <UploadFile scale={scale} />
       </div>
     </div>
   );
