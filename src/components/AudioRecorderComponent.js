@@ -1,73 +1,69 @@
-// // App.js
+import React, { useState, useRef } from 'react';
 
-// import React, { useState } from 'react';
-
-// const AudioRecorderComponent = () => {
-//   const [isRecording, setIsRecording] = useState(false);
-
-//   const startRecording = () => {
-//     // Add logic for starting recording
-//     setIsRecording(true);
-//   };
-
-//   const stopRecording = () => {
-//     // Add logic for stopping recording
-//     setIsRecording(false);
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={startRecording} disabled={isRecording}>
-//         Start Recording
-//       </button>
-//       <button onClick={stopRecording} disabled={!isRecording}>
-//         Stop Recording
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default AudioRecorderComponent;
-
-import React, { useState } from 'react';
-
-const AudioRecorderComponent = ({scale}) => {
-  const [isRecording, setIsRecording] = useState(false);
+const AudioRecorderComponent = () => {
+  const [mediaRecorder, setMediaRecorder] = useState(null);
+  let audioChunks = [];
+  const [recording, setRecording] = useState(false);
+  const audioElement = useRef(null);
 
   const startRecording = () => {
-    // You can add your logic to start recording here
-    setIsRecording(true);
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then((stream) => {
+        const recorder = new MediaRecorder(stream);
+
+        recorder.ondataavailable = (e) => {
+          if (e.data.size > 0) {
+            audioChunks.push(e.data);
+          }
+        };
+
+        recorder.onstop = () => {
+          const audioBlob = new Blob(audioChunks);
+          const audioUrl = URL.createObjectURL(audioBlob);
+
+          audioElement.current.src = audioUrl;
+          audioElement.current.controls = true;
+
+          const formData = new FormData();
+          formData.append('file', audioBlob);
+
+          const endpoint = 'http://127.0.0.1:5000/process-audio';
+
+          fetch(endpoint, {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('Audio uploaded successfully:', data);
+            })
+            .catch((error) => {
+              console.error('Error uploading audio:', error);
+            });
+
+          setRecording(false);
+        };
+
+        recorder.start();
+        setMediaRecorder(recorder);
+        setRecording(true);
+      })
+      .catch((error) => {
+        console.error('Error accessing microphone:', error);
+      });
   };
 
   const stopRecording = () => {
-    // You can add your logic to stop recording here
-    setIsRecording(false);
-  };
-
-  const circleStyle = {
-    width: `${70 * scale}px`,
-    height: `${70 * scale}px`,
-    borderRadius: '50%',
-    backgroundColor: 'red',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    fontWeight: 'bold',
-    cursor: 'pointer',
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+      mediaRecorder.stop();
+    }
   };
 
   return (
-    <div style={{ position: 'relative' }}>
-      {isRecording ? (
-        <div style={circleStyle} onClick={stopRecording}>
-          STOP
-        </div>
-      ) : (
-        <div style={circleStyle} onClick={startRecording}>
-          REC
-        </div>
-      )}
+    <div>
+      <button onClick={startRecording} disabled={recording}>Start Recording</button>
+      <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>
+      <audio ref={audioElement} controls />
     </div>
   );
 };

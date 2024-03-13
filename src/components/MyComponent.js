@@ -10,4 +10,3 @@ const MyComponent = ({ buttonText }) => {
 };
 
 export default MyComponent;
-
