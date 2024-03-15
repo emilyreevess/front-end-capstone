@@ -96,6 +96,7 @@
 import React, { useEffect, useState } from 'react';
 import AudioRecorderComponent from './AudioRecorderComponent';
 import UploadFile from './UploadFile';
+import MessageModal from './MessageModal';
 
 const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
   const [scale, setScale] = useState(1);
@@ -126,6 +127,7 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
 
   const handleOverlayClick = (message) => {
     alert(`Correct your notes for ${message}`);
+   // <MessageModal></MessageModal>
   };
 
   const handleMouseEnter = (index) => {
@@ -137,12 +139,20 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
   };
 
   const divs = [
+    //row 1
     {
       top: 163,
       left: 53,
       width: 150,
-      height: 94,
+      height: 95,
       message: 'Bar 1',
+    },
+    {
+      top: 163,
+      left: 204,
+      width: 106,
+      height: 95,
+      message: 'Bar 2',
     },
     {
       top: 163,
@@ -151,7 +161,156 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
       height: 95,
       message: 'Bar 3',
     },
-    // Add more div configurations as needed
+    {
+      top: 163,
+      left: 418,
+      width: 106,
+      height: 95,
+      message: 'Bar 4',
+    },
+    {
+      top: 163,
+      left: 525,
+      width: 106,
+      height: 95,
+      message: 'Bar 5',
+    },
+    {
+      top: 163,
+      left: 632,
+      width: 106,
+      height: 95,
+      message: 'Bar 6',
+    },
+    //row 2
+    {
+      top: 356,
+      left: 53,
+      width: 156,
+      height: 95,
+      message: 'Bar 7',
+    },
+    {
+      top: 356,
+      left: 210,
+      width: 85,
+      height: 95,
+      message: 'Bar 8',
+    },
+    {
+      top: 356,
+      left: 296,
+      width: 110,
+      height: 95,
+      message: 'Bar 9',
+    },
+    {
+      top: 356,
+      left: 406,
+      width: 110,
+      height: 95,
+      message: 'Bar 10',
+    },
+    {
+      top: 356,
+      left: 517,
+      width: 110,
+      height: 95,
+      message: 'Bar 11',
+    },
+    {
+      top: 356,
+      left: 628,
+      width: 110,
+      height: 95,
+      message: 'Bar 12',
+    },
+    //row 3
+    {
+      top: 548,
+      left: 53,
+      width: 136,
+      height: 95,
+      message: 'Bar 13',
+    },
+    {
+      top: 548,
+      left: 189,
+      width: 106,
+      height: 95,
+      message: 'Bar 14',
+    },
+    {
+      top: 548,
+      left: 296,
+      width: 122,
+      height: 95,
+      message: 'Bar 15',
+    },
+    {
+      top: 548,
+      left: 419,
+      width: 106,
+      height: 95,
+      message: 'Bar 16',
+    },
+    {
+      top: 548,
+      left: 525,
+      width: 106,
+      height: 95,
+      message: 'Bar 17',
+    },
+    {
+      top: 548,
+      left: 632,
+      width: 106,
+      height: 95,
+      message: 'Bar 18',
+    },
+    //row 4
+    {
+      top: 740,
+      left: 53,
+      width: 139,
+      height: 95,
+      message: 'Bar 19',
+    },
+    {
+      top: 740,
+      left: 193,
+      width: 109,
+      height: 95,
+      message: 'Bar 20',
+    },
+    {
+      top: 740,
+      left: 302,
+      width: 109,
+      height: 95,
+      message: 'Bar 21',
+    },
+    {
+      top: 740,
+      left: 412,
+      width: 109,
+      height: 95,
+      message: 'Bar 22',
+    },
+    {
+      top: 740,
+      left: 522,
+      width: 125,
+      height: 95,
+      message: 'Bar 23',
+    },
+    {
+      top: 740,
+      left: 648,
+      width: 88,
+      height: 95,
+      message: 'Bar 23',
+    },
   ];
 
   return (
