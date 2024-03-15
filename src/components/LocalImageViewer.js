@@ -55,42 +55,47 @@ const LocalImageViewer = () => {
   ];
 
   return (
-    <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div className="image-container" style={{ position: 'relative', maxHeight: '100vh' }}>
-        <img
-          src='/GroundTruthTwinkleTwinkle.jpg'
-          alt="JPG Viewer"
-          style={{ width: 'auto', maxHeight: '100vh' }}
-          onLoad={updateScale} // Trigger scale update when image loads
-        />
-        {divs.map((div, index) => (
-          <div
-            key={index}
-            onClick={() => handleOverlayClick(div.message)}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-            style={{
-              position: 'absolute',
-              top: div.top * scale + 'px',
-              left: div.left * scale + 'px',
-              width: div.width * scale + 'px',
-              height: div.height * scale + 'px',
-              backgroundColor: isHovered === index ? 'rgba(223, 189, 226, 0.7)' : 'rgba(233, 199, 236, 0.5)',
-              transition: 'background-color 0.3s ease',
-            }}
-          ></div>
-        ))}
-        <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}>
-          <AudioRecorderComponent scale={scale} />
+    <div style={{ textAlign: 'left', marginBottom: '20px', display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <button type="button" class="btn btn-light" style={{ marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</button>
+      <h1 style={{paddingBottom: '20px', paddingLeft: '20px' }}>Twinkle Twinkle Little Star</h1>
+      <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#EBEEF2'}}>
+        <div className="image-container" style={{ position: 'relative', maxHeight: '100vh' }}>
+          <img
+            src='/GroundTruthTwinkleTwinkle.jpg'
+            alt="JPG Viewer"
+            style={{ width: 'auto', maxHeight: '100vh' }}
+            onLoad={updateScale} // Trigger scale update when image loads
+          />
+          {divs.map((div, index) => (
+            <div
+              key={index}
+              onClick={() => handleOverlayClick(div.message)}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                position: 'absolute',
+                top: div.top * scale + 'px',
+                left: div.left * scale + 'px',
+                width: div.width * scale + 'px',
+                height: div.height * scale + 'px',
+                backgroundColor: isHovered === index ? 'rgba(223, 189, 226, 0.7)' : 'rgba(233, 199, 236, 0.5)',
+                transition: 'background-color 0.3s ease',
+              }}
+            ></div>
+          ))}
+          <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}>
+            <AudioRecorderComponent scale={scale} />
+          </div>
         </div>
-      </div>
-      <div style={{ position: 'absolute', bottom: '20px', left: '5%' }}>
+        <div style={{ position: 'absolute', bottom: '20px', left: '5%' }}>
           <UploadFile scale={scale} />
+        </div>
       </div>
     </div>
   );
 };
 
 export default LocalImageViewer;
+
 
 
