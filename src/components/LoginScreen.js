@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import logo from './logo.png'; // imported octave logo 
+import './LoginScreen.css';
 
 const LoginScreen = ({ onLogin }) => {
     const [username, setUsername] = useState('');
@@ -14,7 +16,8 @@ const LoginScreen = ({ onLogin }) => {
 
     return (
       <div>
-        <h2>Login Screen</h2>
+        <img src={logo} alt="Logo" className="logo" />
+        <h2>Login</h2>
         <label>
           Username:
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
