@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
+import Modal from './Modal';
 
-const AudioRecorderComponent = ({setApiResponse}) => {
+const AudioRecorderComponent = ({apiResponse, setApiResponse}) => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [audioChunks, setAudioChunks] = useState([]);
   const [recording, setRecording] = useState(false);
@@ -61,6 +62,7 @@ const AudioRecorderComponent = ({setApiResponse}) => {
       .then((data) => {
         console.log('Audio uploaded successfully:', data);
         setApiResponse(data.result);
+        setIsModalOpen(true);
       })
       .catch((error) => {
         console.error('Error uploading audio:', error);
@@ -70,12 +72,24 @@ const AudioRecorderComponent = ({setApiResponse}) => {
       setAnalyze(false)
   }
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const cardsContent = apiResponse.map((item, index) => (
+    <div key={index}>
+      <h3>Bar {item}</h3>
+      <p>{item}</p>
+    </div>
+  ));
+
   return (
     <div>
       <button onClick={startRecording} disabled={recording}>Start Recording</button>
       <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>
       <audio ref={audioElement} controls />
       {showAnalyze && <button onClick={analyze}>Analyze Recording</button>}
+      <div>
+        {isModalOpen && <Modal cards={cardsContent}></Modal>}
+      </div>
     </div>
   );
 };
