@@ -8,6 +8,13 @@ import LocalImageViewer from './components/LocalImageViewer.js';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [apiResponse, setApiResponse] = useState(null);
+
+  const handleApiResponse = (response) => {
+    setApiResponse(response);
+    console.log('API Response received in App:', response);
+    // Perform additional actions with the response if needed
+  };
 
   const handleLogin = () => {
     setLoggedIn(true);
@@ -21,7 +28,7 @@ function App() {
             path="/" element={isLoggedIn ? <MainScreen /> : <LoginScreen onLogin={handleLogin} />}
           />
           {/* <Route path="/" element={<MyComponent buttonText="Twinkle Twinkle Little Star" />} /> */}
-          <Route path="/sheetmusic" element={<LocalImageViewer />} />
+          <Route path="/sheetmusic" element={<LocalImageViewer apiResponse={apiResponse} setApiResponse={handleApiResponse}/>} />
         </Routes>
       </div>
     </Router>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-const UploadFile = () => {
+const UploadFile = ({setApiResponse}) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [file, setFile] = useState(null);
+
 
   const handleFileChange = (event) => {
     const uploadedFile = event.target.files[0];
@@ -35,6 +36,7 @@ const UploadFile = () => {
       const result = await response.json();
       if (response.ok) {
         console.log('File uploaded successfully:', result);
+        setApiResponse(result.result);
       } else {
         console.error('File upload failed:', result);
       }

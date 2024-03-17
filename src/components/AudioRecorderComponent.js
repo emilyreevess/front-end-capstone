@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-const AudioRecorderComponent = () => {
+const AudioRecorderComponent = ({setApiResponse}) => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [audioChunks, setAudioChunks] = useState([]);
   const [recording, setRecording] = useState(false);
@@ -60,6 +60,7 @@ const AudioRecorderComponent = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log('Audio uploaded successfully:', data);
+        setApiResponse(data.result);
       })
       .catch((error) => {
         console.error('Error uploading audio:', error);
