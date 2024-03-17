@@ -8,7 +8,7 @@ const MainScreen = () => {
   return (
     <div>
       <div className="header">
-        <img src={logo} alt="Logo" className="logo" />
+        <img src={logo} alt="Logo" className="logomain" />
       </div>
       <div className="main-screen-container">
         <h2>Welcome back, Jane!</h2>

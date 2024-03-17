@@ -71,7 +71,7 @@ const AudioRecorderComponent = ({setApiResponse}) => {
   }
 
   return (
-    <div>
+    <div style={{alignItems: 'center' }}>
       <button onClick={startRecording} disabled={recording}>Start Recording</button>
       <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>
       <audio ref={audioElement} controls />
