@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import UploadButton from './UploadButton.png'; // Import the UploadIcon.png file
 
 const UploadFile = ({setApiResponse}) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -47,8 +48,28 @@ const UploadFile = ({setApiResponse}) => {
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
-      {file && <button onClick={handleUpload}>Analyze Uploaded File</button>}
+      <label htmlFor="file-upload">
+        <img src={UploadButton} alt="Upload Icon" />
+        <input id="file-upload" type="file" onChange={handleFileChange} style={{ display: 'none' }} />
+      </label>
+      {file && (
+      <button
+        onClick={handleUpload}
+        style={{
+          backgroundColor: '#5E38BA',
+          color: 'white',
+          borderRadius: '50px',
+          padding: '8px 16px',
+          border: 'none',
+          cursor: 'pointer',
+          position: 'absolute',
+          bottom: '20px',
+          right: '15px',
+        }}
+      >
+        See how you did!
+      </button>
+    )}    
     </div>
   );
 };
