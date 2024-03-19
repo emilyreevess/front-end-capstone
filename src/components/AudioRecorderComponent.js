@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const AudioRecorderComponent = ({setApiResponse}) => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
@@ -69,13 +70,29 @@ const AudioRecorderComponent = ({setApiResponse}) => {
       setAudioChunks([]);
       setAnalyze(false)
   }
-
+// display: 'flex', flexDirection: 'column', style={{alignItems: 'center' }}
+//style={{ position: 'absolute', left: '0', transform: 'translateX(-50%)', bottom: '10px', textAlign: 'center', maxWidth: '500px' }}
   return (
-    <div style={{alignItems: 'center' }}>
-      <button onClick={startRecording} disabled={recording}>Start Recording</button>
-      <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>
-      <audio ref={audioElement} controls />
-      {showAnalyze && <button onClick={analyze}>Analyze Recording</button>}
+    <div >
+      <div>
+        <div style={{ width: '100%' }}>
+          <button onClick={recording ? stopRecording : startRecording} style={{ borderRadius: recording ? '10px' : '30px', backgroundColor: recording ? "rgb(225, 96, 77)" : "rgb(225, 96, 77)", width: recording ? '30px' : '30px', height: recording ? '30px' : '30px', border: "none" }}>
+            {/* Empty string */}
+          </button>
+          {recording ? <LinearProgress style={{ width: '100%' }} /> : null}
+        </div>
+        <div>
+          <audio ref={audioElement} controls />
+        </div>
+      </div>
+      {showAnalyze && <button onClick={analyze} style={{
+          backgroundColor: '#5E38BA',
+          color: 'white',
+          borderRadius: '50px',
+          padding: '8px 16px',
+          border: 'none',
+          cursor: 'pointer',
+        }}>See how you did!</button>}
     </div>
   );
 };
