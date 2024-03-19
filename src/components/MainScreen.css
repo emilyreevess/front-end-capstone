@@ -20,7 +20,7 @@
   align-items: center;
 }
 
-.logo {
+.logomain {
   width: 50px;
   height: auto;
   margin-bottom: 2rem; /* Space below the logo */
@@ -185,47 +185,3 @@
   color: #5E38BA;
 }
 
-
-/* .main-screen-container {
-    position: relative;
-    text-align: left;
-    min-height: 100vh; 
-    padding-left: 40px;
-}
-
-.new-session-btn {
-    position: absolute;
-    bottom: 10px; 
-    right: 10px; 
-}
-
-.header {
-    text-align: center;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .logomain {
-    width: 50px; /* Adjust the width as needed */
-  }
-
-  .footer {
-    background-color: #ffffff; 
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    border-top: 1px solid #ccc;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .footer-section {
-    font-size: 16px;
-  }
-
-  .footer-section.my-songs {
-    color: #5E38BA;
-  }
-  
-   */

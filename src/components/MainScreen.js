@@ -13,7 +13,7 @@ const MainScreen = () => {
     <div className="main-screen-container">
       <div className="header">
         <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" className="logomain" />
         </div>
     
         <h2>Welcome back, Jane!</h2>
