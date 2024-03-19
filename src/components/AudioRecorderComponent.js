@@ -6,6 +6,7 @@ const AudioRecorderComponent = ({apiResponse, setApiResponse}) => {
   const [audioChunks, setAudioChunks] = useState([]);
   const [recording, setRecording] = useState(false);
   const [showAnalyze, setAnalyze] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const audioElement = useRef(null);
 
   const startRecording = () => {
@@ -71,8 +72,6 @@ const AudioRecorderComponent = ({apiResponse, setApiResponse}) => {
       setAudioChunks([]);
       setAnalyze(false)
   }
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   function groupConsecutiveNumbers(numbers) {
     const groups = [];

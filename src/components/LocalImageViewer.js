@@ -251,9 +251,9 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
             return null;
           })}
         </div>
-        <div style={{ position: 'absolute', bottom: '20px', left: '5%' }}>
-            <UploadFile scale={scale} setApiResponse={setApiResponse}/>
-        </div>
+      </div>
+      <div style={{ position: 'absolute', bottom: '20px', left: '5%' }}>
+        <UploadFile scale={scale} apiResponse={apiResponse} setApiResponse={setApiResponse}/>
       </div>
       <div style={{ position: 'absolute', bottom: '20px', left: '50%'}}>
         <AudioRecorderComponent scale={scale} apiResponse={apiResponse} setApiResponse={setApiResponse}/>

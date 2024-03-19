@@ -40,6 +40,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-end; /* Align modal content to the bottom */
+    background-color: white;
+    z-index: 1000; /* Ensure it appears above other content */
   }
   
   .modal-content {
