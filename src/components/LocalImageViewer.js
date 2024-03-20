@@ -221,7 +221,7 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
       <div style={{ textAlign: 'left', marginBottom: '20px', display: 'flex', flexDirection: 'column', height: '100vh' }}>
           <button type="button" class="btn btn-light" style={{ marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</button>
           <h1 style={{ paddingBottom: '20px', paddingLeft: '20px' }}>Twinkle Twinkle Little Star</h1>
-        <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',  backgroundColor: '#EBEEF2' }}>
+        <div style={{ height: '100vh', display: 'flex', justifyContent: 'center',  backgroundColor: '#EBEEF2', paddingTop: '30px' }}>
           <div className="image-container" style={{ position: 'relative', maxHeight: '100vh' }}>
             <img
               src='/GroundTruthTwinkleTwinkle.jpg'
