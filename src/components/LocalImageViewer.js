@@ -29,18 +29,18 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
-  const handleOverlayClick = (message) => {
-    alert(`Correct your notes for ${message}`);
-   // <MessageModal></MessageModal>
-  };
+  // const handleOverlayClick = (message) => {
+  //   alert(`Correct your notes for ${message}`);
+  //  // <MessageModal></MessageModal>
+  // };
 
-  const handleMouseEnter = (index) => {
-    setIsHovered(index);
-  };
+  // const handleMouseEnter = (index) => {
+  //   setIsHovered(index);
+  // };
 
-  const handleMouseLeave = () => {
-    setIsHovered(null);
-  };
+  // const handleMouseLeave = () => {
+  //   setIsHovered(null);
+  // };
 
   const divs = [
     //row 1
@@ -235,9 +235,9 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
                 return (
                   <div
                     key={index}
-                    onClick={() => handleOverlayClick(div.message)}
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={handleMouseLeave}
+                    // onClick={() => handleOverlayClick(div.message)}
+                    // onMouseEnter={() => handleMouseEnter(index)}
+                    // onMouseLeave={handleMouseLeave}
                     style={{
                       position: 'absolute',
                       top: div.top * scale + 'px',
