@@ -218,64 +218,64 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
   ];
 
   return (
-   <div style={{ textAlign: 'left', marginBottom: '20px', display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <button type="button" class="btn btn-light" style={{ marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</button>
-      <h1 style={{ paddingBottom: '20px', paddingLeft: '20px' }}>Twinkle Twinkle Little Star</h1>
-    <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',  backgroundColor: '#EBEEF2' }}>
-      <div className="image-container" style={{ position: 'relative', maxHeight: '100vh' }}>
-        <img
-          src='/GroundTruthTwinkleTwinkle.jpg'
-          alt="JPG Viewer"
-          style={{ width: 'auto', maxHeight: '100vh' }}
-          onLoad={updateScale}
-        />
-        {divs.map((div, index) => {
-          // Adjust index by 1 for 1-based indexing to match API response
-          if (visibleDivs.includes(index + 1)) {
-            return (
-              <div
-                key={index}
-                onClick={() => handleOverlayClick(div.message)}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-                style={{
-                  position: 'absolute',
-                  top: div.top * scale + 'px',
-                  left: div.left * scale + 'px',
-                  width: div.width * scale + 'px',
-                  height: div.height * scale + 'px',
-                  backgroundColor: isHovered === index ? 'rgba(223, 189, 226, 0.7)' : 'rgba(233, 199, 236, 0.5)',
-                  transition: 'background-color 0.3s ease',
-                }}
-              ></div>
-            );
-          }
-          return null;
-        })}
-        </div>
-        <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          background: '#fff', // Solid white background
-          padding: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center', // Center horizontally
-          boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.1)',
-          zIndex: 10, // Ensure it's above the background content
-        }}>
-          <div style={{ marginBottom: '10px' }}>
-            <AudioRecorderComponent scale={scale} setApiResponse={setApiResponse} />
+      <div style={{ textAlign: 'left', marginBottom: '20px', display: 'flex', flexDirection: 'column', height: '100vh' }}>
+          <button type="button" class="btn btn-light" style={{ marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</button>
+          <h1 style={{ paddingBottom: '20px', paddingLeft: '20px' }}>Twinkle Twinkle Little Star</h1>
+        <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',  backgroundColor: '#EBEEF2' }}>
+          <div className="image-container" style={{ position: 'relative', maxHeight: '100vh' }}>
+            <img
+              src='/GroundTruthTwinkleTwinkle.jpg'
+              alt="JPG Viewer"
+              style={{ width: 'auto', maxHeight: '100vh' }}
+              onLoad={updateScale}
+            />
+            {divs.map((div, index) => {
+              // Adjust index by 1 for 1-based indexing to match API response
+              if (visibleDivs.includes(index + 1)) {
+                return (
+                  <div
+                    key={index}
+                    onClick={() => handleOverlayClick(div.message)}
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
+                    style={{
+                      position: 'absolute',
+                      top: div.top * scale + 'px',
+                      left: div.left * scale + 'px',
+                      width: div.width * scale + 'px',
+                      height: div.height * scale + 'px',
+                      backgroundColor: isHovered === index ? 'rgba(223, 189, 226, 0.7)' : 'rgba(233, 199, 236, 0.5)',
+                      transition: 'background-color 0.3s ease',
+                    }}
+                  ></div>
+                );
+              }
+              return null;
+            })}
+            </div>
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              background: '#fff', // Solid white background
+              padding: '20px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center', // Center horizontally
+              boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.1)',
+              zIndex: 10, // Ensure it's above the background content
+            }}>
+              <div style={{ position: 'absolute', bottom: 20, left: 20}}>
+                <UploadFile scale={scale} apiResponse={apiResponse} setApiResponse={setApiResponse}/>
+              </div>
+              <div style={{ marginBottom: '10px' }}>
+                <AudioRecorderComponent scale={scale} apiResponse={apiResponse} setApiResponse={setApiResponse}/>
+              </div>
+            </div>
           </div>
-          <div style={{ position: 'absolute', bottom: 20, left: 20 }}>
-            <UploadFile scale={scale} setApiResponse={setApiResponse} />
-          </div>
         </div>
-      </div>
-    </div>
   );
 };
 

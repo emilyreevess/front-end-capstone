@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react';
+import Modal from './Modal';
 import LinearProgress from '@mui/material/LinearProgress';
 
-const AudioRecorderComponent = ({setApiResponse}) => {
+const AudioRecorderComponent = ({apiResponse, setApiResponse}) => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [audioChunks, setAudioChunks] = useState([]);
   const [recording, setRecording] = useState(false);
   const [showAnalyze, setAnalyze] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const audioElement = useRef(null);
 
   const startRecording = () => {
@@ -62,6 +64,7 @@ const AudioRecorderComponent = ({setApiResponse}) => {
       .then((data) => {
         console.log('Audio uploaded successfully:', data);
         setApiResponse(data.result);
+        setIsModalOpen(true);
       })
       .catch((error) => {
         console.error('Error uploading audio:', error);
@@ -97,6 +100,9 @@ const AudioRecorderComponent = ({setApiResponse}) => {
           right: '15px',
           zIndex: 11, // Ensure it's above other elements
         }}>See how you did!</button>}
+      <div>
+        {isModalOpen && <Modal apiResponse={apiResponse}></Modal>}
+      </div>
     </div>
   );
 };
