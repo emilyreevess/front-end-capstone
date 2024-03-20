@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AudioRecorderComponent from './AudioRecorderComponent';
 import UploadFile from './UploadFile';
+import { red } from '@mui/material/colors';
 
 const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
   const [scale, setScale] = useState(1);
@@ -218,11 +219,12 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
   ];
 
   return (
-      <div style={{ textAlign: 'left', marginBottom: '20px', display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <div style={{display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <div style = {{position:'fixed', textAlign: 'left', width:'auto',}}>
           <button type="button" class="btn btn-light" style={{ marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</button>
-          <h1 style={{ paddingBottom: '20px', paddingLeft: '20px' }}>Twinkle Twinkle Little Star</h1>
+        </div>
         <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',  backgroundColor: '#EBEEF2' }}>
-          <div className="image-container" style={{ position: 'relative', maxHeight: '100vh' }}>
+          <div className="image-container" style={{ position: 'relative', maxHeight: '90vh', overflow:'auto' }}>
             <img
               src='/GroundTruthTwinkleTwinkle.jpg'
               alt="JPG Viewer"
