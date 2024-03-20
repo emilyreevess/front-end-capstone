@@ -29,6 +29,7 @@ function App() {
           />
           {/* <Route path="/" element={<MyComponent buttonText="Twinkle Twinkle Little Star" />} /> */}
           <Route path="/sheetmusic" element={<LocalImageViewer apiResponse={apiResponse} setApiResponse={handleApiResponse}/>} />
+          <Route path="/MainScreen" element={<MainScreen/>} />
         </Routes>
       </div>
     </Router>
