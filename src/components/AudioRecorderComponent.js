@@ -78,8 +78,8 @@ const AudioRecorderComponent = ({apiResponse, setApiResponse}) => {
   return (
     <div >
       <div>
-        <div style={{ width: '100%' }}>
-          <button onClick={recording ? stopRecording : startRecording} style={{ borderRadius: recording ? '10px' : '30px', backgroundColor: recording ? "rgb(225, 96, 77)" : "rgb(225, 96, 77)", width: recording ? '30px' : '30px', height: recording ? '30px' : '30px', border: "none" }}>
+        <div style={{ width: '100%', textAlign: 'center'}}>
+          <button onClick={recording ? stopRecording : startRecording} style={{ borderRadius: recording ? '10px' : '30px', backgroundColor: recording ? "rgb(225, 96, 77)" : "rgb(225, 96, 77)", width: recording ? '30px' : '30px', height: recording ? '30px' : '30px', border: "none"}}>
             {/* Empty string */}
           </button>
           {recording ? <LinearProgress style={{ width: '100%' }} /> : null}
@@ -88,13 +88,17 @@ const AudioRecorderComponent = ({apiResponse, setApiResponse}) => {
           <audio ref={audioElement} controls />
         </div>
       </div>
-      {showAnalyze && <button onClick={analyze} style={{
+      {showAnalyze && <button onClick={analyze}  style={{
           backgroundColor: '#5E38BA',
           color: 'white',
           borderRadius: '50px',
           padding: '8px 16px',
           border: 'none',
           cursor: 'pointer',
+          position: 'fixed', // Position relative to the viewport
+          bottom: '20px',
+          right: '15px',
+          zIndex: 11, // Ensure it's above other elements
         }}>See how you did!</button>}
       <div>
         {isModalOpen && <Modal apiResponse={apiResponse}></Modal>}
