@@ -76,7 +76,25 @@ const Modal = ({ children, apiResponse }) => {
     setScrollPosition(e.target.scrollTop);
   };
 
-  return (
+  let perfect = false;
+
+  if (apiResponse.length === 0) {
+    // Render custom message when API response is empty
+    perfect = true;
+  }
+
+  if(perfect){
+    return(
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <h3>Perfection!</h3>
+        <h4>Great job, you're a superstar!</h4>
+      </div>
+    </div>
+    ) 
+  }
+  else{
+    return (
     <div className="modal-overlay">
       <div className="modal-content">
         <h3>{header}</h3>
@@ -92,7 +110,8 @@ const Modal = ({ children, apiResponse }) => {
         </div>
       </div>
     </div>
-  );
+  );}
+  
 };
 
 export default Modal;
