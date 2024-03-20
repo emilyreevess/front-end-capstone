@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 import UploadButton from './UploadButton.png'; // Import the UploadIcon.png file
+import { Oval } from 'react-loader-spinner'; 
 
 const UploadFile = ({apiResponse, setApiResponse}) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -48,6 +49,13 @@ const UploadFile = ({apiResponse, setApiResponse}) => {
     }
   };
 
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  const handleButtonClick = () => {
+    setButtonClicked(true);
+    handleUpload();
+  };  
+
   return (
     <div>
       <label htmlFor="file-upload">
@@ -56,7 +64,7 @@ const UploadFile = ({apiResponse, setApiResponse}) => {
       </label>
       {file && (
       <button
-        onClick={handleUpload}
+        onClick={handleButtonClick}
         style={{
           backgroundColor: '#5E38BA',
           color: 'white',
@@ -70,7 +78,16 @@ const UploadFile = ({apiResponse, setApiResponse}) => {
           zIndex: 11, // Ensure it's above other elements
         }}
       >
-        See how you did!
+       {buttonClicked ? (
+            <Oval
+              color="#FFFFFF"
+              height={20}
+              width={20}
+              style={{ marginRight: '10px'}}
+            />
+          ) : (
+            'See how you did!'
+          )}
       </button>
     )}    
       <div>
