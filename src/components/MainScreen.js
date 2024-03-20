@@ -7,69 +7,73 @@ import star from './star.png'; // Replace with your imported icons
 import lamb from './lamb.png';
 import stars from './stars.png';
 import buns from './buns.png';
+import { Link } from 'react-router-dom';
 
 const MainScreen = () => {
   return (
-    <div className="main-screen-container">
-      <div className="header">
-        <div className="logo-container">
-          <img src={logo} alt="Logo" className="logomain" />
-        </div>
-    
-        <h2>Welcome back, Jane!</h2>
-        <p>Pick or add a song to start playing. Practice makes perfect!</p>
-      </div>
+    <div>
+      <div className="main-screen-container">
+        <div className="header">
+          <div className="logo-container">
+            <img src={logo} alt="Logo" className="logomain" />
+          </div>
 
-      <div className="tab-bar">
-        <div className="tabs">
-          <div className="tab active">My Songs</div>
-          <div className="tab">Archive</div>
+          <h2>Welcome back, Jane!</h2>
+          <p>Pick or add a song to start playing. Practice makes perfect!</p>
         </div>
-      </div>
-      
-      <div className="song-cards-container">
-        <div className="song-card">
-          <img src={star} alt="Twinkle Twinkle Little Star" className="song-icon" />
-          <div className="song-details">
-            <MyComponent buttonText='Twinkle Twinkle Little Star'/>
-            <div className="song-last-played">Last played: Yesterday, 11:02 am</div>
+
+        <div className="tab-bar">
+          <div className="tabs">
+            <div className="tab active">My Songs</div>
+            <div className="tab">Archive</div>
           </div>
         </div>
 
-        <div className="song-card">
-          <img src={lamb} alt="Mary Had A Little Lamb" className="song-icon" />
-          <div className="song-details">
-            <div className="song-title">Mary Had A Little Lamb</div>
-            <div className="song-last-played">Last played: February, 29th, 2024</div>
-          </div>
-        </div>
+        <div className="song-cards-container">
+        <Link to="/song-details" className="song-card">
+            <img src={star} alt="Twinkle Twinkle Little Star" className="song-icon" />
+            <div className="song-details">
+              <MyComponent buttonText='Twinkle Twinkle Little Star' />
+              <div className="song-last-played">Last played: Yesterday, 11:02 am</div>
+            </div>
+          </Link>
 
-        <div className="song-card">
-          <img src={stars} alt="Wish Upon A Star" className="song-icon" />
-          <div className="song-details">
-            <div className="song-title">Wish Upon A Star</div>
-            <div className="song-last-played">Last played: February, 6th, 2024</div>
+          <div className="song-card">
+            <img src={lamb} alt="Mary Had A Little Lamb" className="song-icon" />
+            <div className="song-details">
+              <div className="song-title">Mary Had A Little Lamb</div>
+              <div className="song-last-played">Last played: February, 29th, 2024</div>
+            </div>
           </div>
-        </div>
 
-        <div className="song-card">
-          <img src={buns} alt="Hot Cross Buns" className="song-icon" />
-          <div className="song-details">
-            <div className="song-title">Hot Cross Buns</div>
-            <div className="song-last-played">Last played: January, 6th, 2024</div>
+          <div className="song-card">
+            <img src={stars} alt="Wish Upon A Star" className="song-icon" />
+            <div className="song-details">
+              <div className="song-title">Wish Upon A Star</div>
+              <div className="song-last-played">Last played: February, 6th, 2024</div>
+            </div>
           </div>
-        </div>
 
-      </div> 
-      <div style={{ textAlign: 'right', marginRight: '40px' }}>
-        <button type="button" className="btn btn-primary" style={{ backgroundColor: '#5E38BA', borderRadius: '100px' }}> + Add a new song</button>
+          <div className="song-card">
+            <img src={buns} alt="Hot Cross Buns" className="song-icon" />
+            <div className="song-details">
+              <div className="song-title">Hot Cross Buns</div>
+              <div className="song-last-played">Last played: January, 6th, 2024</div>
+            </div>
+          </div>
+
+        </div>
+        <div style={{ textAlign: 'right', marginRight: '40px' }}>
+          <button type="button" className="btn btn-primary" style={{ backgroundColor: '#5E38BA', borderRadius: '100px' }}> + Add a new song</button>
+        </div>
       </div>
-
-      <div className="footer">
-         <div className="footer-section my-songs">My songs</div>
-         <div className="footer-section">My Progress</div>
-         <div className="footer-section">Profile</div>
-      </div>
+        <nav className="navbar navbar-expand navbar-dark bg-light footer">
+          <div className="navbar-nav">
+            <a className="nav-item nav-link active" href="#">My songs</a>
+            <Link to="/MyProgress" className="nav-item nav-link" href="#">My Progress</Link>
+            <a className="nav-item nav-link" href="#">My Profile</a>
+          </div>
+        </nav>
     </div>
   );
 };

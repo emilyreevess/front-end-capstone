@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import AudioRecorderComponent from './AudioRecorderComponent';
 import UploadFile from './UploadFile';
+import { Link } from 'react-router-dom';
 
 const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
   const [scale, setScale] = useState(1);
-  const [isHovered, setIsHovered] = useState(null);
   const [visibleDivs, setVisibleDivs] = useState([]);
 
   useEffect(() => {
@@ -28,19 +28,6 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
     window.addEventListener('resize', updateScale);
     return () => window.removeEventListener('resize', updateScale);
   }, []);
-
-  const handleOverlayClick = (message) => {
-    alert(`Correct your notes for ${message}`);
-   // <MessageModal></MessageModal>
-  };
-
-  const handleMouseEnter = (index) => {
-    setIsHovered(index);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(null);
-  };
 
   const divs = [
     //row 1
@@ -219,7 +206,7 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
 
   return (
       <div style={{ textAlign: 'left', marginBottom: '20px', display: 'flex', flexDirection: 'column', height: '100vh' }}>
-          <button type="button" class="btn btn-light" style={{ marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</button>
+          <Link to='/Mainscreen' type="button" class="btn btn-light" style={{ marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</Link>
           <h1 style={{ paddingBottom: '20px', paddingLeft: '20px' }}>Twinkle Twinkle Little Star</h1>
         <div style={{ height: '100vh', display: 'flex', justifyContent: 'center',  backgroundColor: '#EBEEF2', paddingTop: '30px' }}>
           <div className="image-container" style={{ position: 'relative', maxHeight: '100vh' }}>
@@ -235,16 +222,13 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
                 return (
                   <div
                     key={index}
-                    onClick={() => handleOverlayClick(div.message)}
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={handleMouseLeave}
                     style={{
                       position: 'absolute',
                       top: div.top * scale + 'px',
                       left: div.left * scale + 'px',
                       width: div.width * scale + 'px',
                       height: div.height * scale + 'px',
-                      backgroundColor: isHovered === index ? 'rgba(223, 189, 226, 0.7)' : 'rgba(233, 199, 236, 0.5)',
+                      backgroundColor: 'rgba(233, 199, 236, 0.5)',
                       transition: 'background-color 0.3s ease',
                     }}
                   ></div>
