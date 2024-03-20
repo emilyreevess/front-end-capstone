@@ -1,3 +1,4 @@
+import { margin } from '@mui/system';
 import React, { useState } from 'react';
 import './Modal.css';
 
@@ -72,14 +73,15 @@ const Modal = ({ children, apiResponse }) => {
   ));
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <h3>{header}</h3>
-        <h4>{sentence}</h4>
-        {/* Card container with scrollable content */}
-        <div className="card-container" onScroll={handleScroll}>
+    <div className="modal-overlay" style = {{height: '400px', borderRadius: '32px 32px 0 0'}}>
+      <div className="modal-content" style = {{height:'100%', position: 'absolute', paddingBottom: 0}}>
+        <div className="feedback-title" style = {{display: 'flex', flexDirection:'column', gap: 8, paddingBottom: 24}}>
+          <h3 className="feedback-title-header" style = {{fontSize: '32px', fontFamily: 'Helvetica, sans-serif', fontWeight:'bold',}}>{header}</h3>
+          <h4>{sentence}</h4>
+        </div>
+        <div className="card-container" onScroll={handleScroll} style = {{height:'464px'}}>
           {cardsContent.map((card, index) => (
-            <div key={index} className="card">
+            <div key={index} className="card" style = {{display: 'flex', padding: '24px', backgroundColor: '#F4F6F9', borderLeft: '15px solid #5E38BA'}}>
               {card}
             </div>
           ))}

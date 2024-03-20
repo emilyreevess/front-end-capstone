@@ -39,7 +39,7 @@
     max-height: 50vh; /* Set maximum height to 50% of the viewport height */
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Align modal content to the bottom */
+    align-items: center; /* Align modal content to the bottom */
     background-color: white;
     z-index: 1000; /* Ensure it appears above other content */
   }
@@ -51,7 +51,6 @@
     width: 100%; /* Set the width to 80% of the viewport width */
     max-width: none; /* Optional: Set a maximum width */
     height: auto; /* Allow the height to adjust based on content */
-    max-height: 250px; /* Set maximum height to 100% of the modal overlay */
     overflow-y: auto; /* Enable vertical scrolling if content overflows */
   }
   
