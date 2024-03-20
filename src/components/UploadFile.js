@@ -47,40 +47,12 @@ const UploadFile = ({apiResponse, setApiResponse}) => {
     }
   };
 
-  function groupConsecutiveNumbers(numbers) {
-    const groups = [];
-    let currentGroup = [numbers[0]];
-  
-    for (let i = 1; i < numbers.length; i++) {
-      if (numbers[i] === currentGroup[currentGroup.length - 1] + 1) {
-        currentGroup.push(numbers[i]);
-      } else {
-        groups.push(currentGroup);
-        currentGroup = [numbers[i]];
-      }
-    }
-    groups.push(currentGroup);
-  
-    return groups;
-  }
-  
-  // Group consecutive numbers in the API response
-  const groupedNumbers = groupConsecutiveNumbers(apiResponse);
-  
-  // Generate cards content
-  const cardsContent = groupedNumbers.map((group, index) => (
-    <div key={index}>
-      <h3>Bar {group.length === 1 ? group[0] : `${group[0]} - ${group[group.length - 1]}`}</h3>
-      <p>{group.join(', ')}</p>
-    </div>
-  ));
-
   return (
     <div>
       <input type="file" onChange={handleFileChange} />
       {file && <button onClick={handleUpload}>Analyze Uploaded File</button>}
       <div>
-        {isModalOpen && <Modal cards={cardsContent}></Modal>}
+        {isModalOpen && <Modal apiResponse={apiResponse}></Modal>}
       </div>
     </div>
   );
