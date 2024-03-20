@@ -4,7 +4,6 @@ import UploadFile from './UploadFile';
 
 const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
   const [scale, setScale] = useState(1);
-  const [isHovered, setIsHovered] = useState(null);
   const [visibleDivs, setVisibleDivs] = useState([]);
 
   useEffect(() => {
@@ -28,19 +27,6 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
     window.addEventListener('resize', updateScale);
     return () => window.removeEventListener('resize', updateScale);
   }, []);
-
-  const handleOverlayClick = (message) => {
-    alert(`Correct your notes for ${message}`);
-   // <MessageModal></MessageModal>
-  };
-
-  const handleMouseEnter = (index) => {
-    setIsHovered(index);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(null);
-  };
 
   const divs = [
     //row 1
@@ -235,16 +221,13 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
                 return (
                   <div
                     key={index}
-                    onClick={() => handleOverlayClick(div.message)}
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={handleMouseLeave}
                     style={{
                       position: 'absolute',
                       top: div.top * scale + 'px',
                       left: div.left * scale + 'px',
                       width: div.width * scale + 'px',
                       height: div.height * scale + 'px',
-                      backgroundColor: isHovered === index ? 'rgba(223, 189, 226, 0.7)' : 'rgba(233, 199, 236, 0.5)',
+                      backgroundColor: 'rgba(233, 199, 236, 0.5)',
                       transition: 'background-color 0.3s ease',
                     }}
                   ></div>
