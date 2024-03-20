@@ -52,6 +52,7 @@
     max-width: none; /* Optional: Set a maximum width */
     height: auto; /* Allow the height to adjust based on content */
     max-height: 250px; /* Set maximum height to 100% of the modal overlay */
+    min-height: 250px;
     overflow-y: auto; /* Enable vertical scrolling if content overflows */
   }
   
