@@ -263,13 +263,14 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.1)', 
+          alignItems: 'center', // Center horizontally
+          boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.1)',
           zIndex: 10, // Ensure it's above the background content
         }}>
-           <div style ={{marginBottom: '10px', alignItems: 'center' }}>
-          <AudioRecorderComponent scale={scale} setApiResponse={setApiResponse} />
+          <div style={{ marginBottom: '10px' }}>
+            <AudioRecorderComponent scale={scale} setApiResponse={setApiResponse} />
           </div>
-          <div style={{ marginBottom: '10px', left: 20, bottom: 20 }}>
+          <div style={{ position: 'absolute', bottom: 20, left: 20 }}>
             <UploadFile scale={scale} setApiResponse={setApiResponse} />
           </div>
         </div>
