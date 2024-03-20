@@ -211,7 +211,7 @@ const LocalImageViewer = ({ apiResponse, setApiResponse }) => {
           <Link to='/Mainscreen' type="button" class="btn btn-light" style={{ marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</Link>
         </div>
         <div style={{ height: '100vh', display: 'flex', justifyContent: 'center',  backgroundColor: '#EBEEF2', paddingTop: '30px' }}>
-          <div className="image-container" style={{ position: 'relative', maxHeight: '90vh', overflow:'auto' }}>
+          <div className="image-container" style={{ position: 'relative', maxHeight: '80vh', overflow:'auto' }}>
             <img
               src='/GroundTruthTwinkleTwinkle.jpg'
               alt="JPG Viewer"

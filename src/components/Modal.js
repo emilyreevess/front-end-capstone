@@ -96,15 +96,15 @@ const Modal = ({ children, apiResponse }) => {
   }
   else{
     return (
-    <div className="modal-overlay" style = {{height: '400px', borderRadius: '32px 32px 0 0'}}>
+    <div className="modal-overlay" style = {{height: '350px', borderRadius: '32px 32px 0 0'}}>
       <div className="modal-content" style = {{height:'100%', position: 'absolute', paddingBottom: 0}}>
         <div className="feedback-title" style = {{display: 'flex', flexDirection:'column', gap: 8, paddingBottom: 24}}>
-          <h3 className="feedback-title-header" style = {{fontSize: '32px', fontFamily: 'Helvetica, sans-serif', fontWeight:'bold',}}>{header}</h3>
-          <h4>{sentence}</h4>
+          <h3 className="feedback-title-header" style = {{fontSize: '32px', fontFamily: 'Helvetica, sans-serif', fontWeight:'bold',textAlign: 'left'}}>{header}</h3>
+          <h4 style={{textAlign: 'left'}}>{sentence}</h4>
         </div>
         <div className="card-container" onScroll={handleScroll} style = {{height:'464px'}}>
           {groupedNumbers.map((group, index) => (
-            <div key={index} className="card" style = {{display: 'flex', padding: '24px', backgroundColor: '#F4F6F9', borderLeft: '15px solid #5E38BA'}}> {/* Add 'card' class here */}
+            <div key={index} className="card" style = {{display: 'flex', padding: '24px', backgroundColor: '#F4F6F9', borderLeft: '15px solid #5E38BA', textAlign: 'left'}}> {/* Add 'card' class here */}
               <h3>Bar {group.length === 1 ? group[0] : `${group[0]} - ${group[group.length - 1]}`} : Correct your notes!</h3>
               <h4>{randSentences[index]}</h4>
             </div>
