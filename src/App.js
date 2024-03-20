@@ -8,7 +8,7 @@ import LocalImageViewer from './components/LocalImageViewer.js';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [apiResponse, setApiResponse] = useState(null);
+  const [apiResponse, setApiResponse] = useState([]);
 
   const handleApiResponse = (response) => {
     setApiResponse(response);

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Modal from './Modal';
 import UploadButton from './UploadButton.png'; // Import the UploadIcon.png file
 
-const UploadFile = ({setApiResponse}) => {
+const UploadFile = ({apiResponse, setApiResponse}) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [file, setFile] = useState(null);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleFileChange = (event) => {
     const uploadedFile = event.target.files[0];
@@ -38,6 +39,7 @@ const UploadFile = ({setApiResponse}) => {
       if (response.ok) {
         console.log('File uploaded successfully:', result);
         setApiResponse(result.result);
+        setIsModalOpen(true)
       } else {
         console.error('File upload failed:', result);
       }
@@ -70,6 +72,9 @@ const UploadFile = ({setApiResponse}) => {
         See how you did!
       </button>
     )}    
+      <div>
+        {isModalOpen && <Modal apiResponse={apiResponse}></Modal>}
+      </div>
     </div>
   );
 };
