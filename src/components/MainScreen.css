@@ -104,6 +104,11 @@
   height: 300px;
 }
 
+.link-style {
+  text-decoration: none;
+  color: inherit; /* Ensures the link text color remains the same */
+}
+
 .song-icon {
   /* adjust as needed */
   width: 80%; /* percentage of the song-card width, adjust as needed */
@@ -170,18 +175,27 @@
   background-color: #ffffff; 
   padding: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Space items evenly */
+  align-items: center; /* Center items vertically */
   border-top: 1px solid #ccc;
   position: fixed;
   bottom: 0;
   width: 100%;
+  margin: 0; /* Remove any default margins */
 }
 
-.footer-section {
-  font-size: 16px;
+.navbar-nav {
+  display: flex; /* Ensure navbar items are displayed as flex items */
+  justify-content: space-around; /* Evenly space out navbar items */
+  width: 100%; /* Take full width of parent */
 }
 
-.footer-section.my-songs {
-  color: #5E38BA;
+.navbar-nav .nav-link {
+  color: #858C94; /* Set text color for non-active links */
+  font-size: 16px; /* Set font size */
+}
+
+.navbar-nav .nav-link.active {
+  color: #5E38BA; /* Set text color for active link */
 }
 
