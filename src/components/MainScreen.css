@@ -1,43 +1,187 @@
 .main-screen-container {
-    position: relative;
-    text-align: left;
-    min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
-    padding-left: 40px;
+  text-align: left;
+  min-height: 100vh;
+  padding: 20px;
+  background: #fff; /* Assuming a white background */
+  color: #333; /* Primary text color */
+  position: relative;
 }
 
-.new-session-btn {
-    position: absolute;
-    bottom: 10px; /* Adjust this value to set the distance from the bottom */
-    right: 10px; /* Adjust this value to set the distance from the right */
+.logo-container {
+  border-bottom: 2px solid #ccc; /* Add a bottom border */
+  text-align: center;
+  width: 100%;
 }
 
 .header {
-    text-align: center;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .logo {
-    width: 50px; /* Adjust the width as needed */
-  }
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .footer {
-    background-color: #ffffff; /* Background color for the footer */
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    border-top: 1px solid #ccc;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .footer-section {
-    font-size: 16px;
-  }
+.logomain {
+  width: 50px;
+  height: auto;
+  margin-bottom: 2rem; /* Space below the logo */
+}
 
-  .footer-section.my-songs {
-    color: #5E38BA;
+.header h2{
+  margin-top: 40px; 
+  font-size: 52px; 
+  align-self: flex-start;
+  font-weight: bold; 
+}
+.header p {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem; /* Adjust padding as needed */
+  border-bottom: 1px solid #ccc; /* If you want a bottom line for the tab bar */
+}
+
+.tabs {
+  /* This will center the tabs even if the space around them is not equal */
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.tab {
+  margin: 0 10px;
+  padding: 10px;
+  cursor: default;
+  border-bottom: 3px solid transparent;
+}
+
+.tab.active {
+  border-bottom: 3px solid blue; /* Or use the color that matches your design */
+}
+
+.sort-bar {
+  text-align: right;
+  cursor: default;
+  user-select: none;
+  padding-right: 20px; /* Or adjust as needed for your layout */
+}
+
+.sort-icon {
+  margin-left: 5px;
+}
+
+.songs-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.song-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* three items per row */
+  gap: 75px; /* space between cards */
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+}
+
+.song-card {
+  display: flex;
+  flex-direction: column; /* stack image and text vertically */
+  justify-content: center; /* This centers items vertically */
+  align-items: center; /* center items horizontally */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* fixed width or percentage, depending on your design requirements */
+  width: 300px; /* adjust as needed */
+  height: 300px;
+}
+
+.song-icon {
+  /* adjust as needed */
+  width: 80%; /* percentage of the song-card width, adjust as needed */
+  margin-bottom: 10px; /* space between image and title */
+}
+
+.song-details {
+  text-align: center;
+}
+
+.song-title {
+  font-weight: bold;
+  margin-bottom: 5px; /* space between title and last played */
+}
+
+.song-last-played {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 991px) {
+  .song-cards-container {
+    grid-template-columns: repeat(2, 1fr); /* two items per row for smaller screens */
   }
-  
-  
+}
+
+@media (max-width: 767px) {
+  .song-cards-container {
+    grid-template-columns: 1fr; /* one item per row for extra small screens */
+  }
+}
+
+.add-song-button-container {
+  position: absolute; /* position relative to the next parent element with relative (or absolute) positioning */
+  bottom: 20px; /* distance from the bottom */
+  right: 20px; /* distance from the right */
+  text-align: right;
+}
+
+/* This styles the button itself */
+.add-song-button {
+  padding: 10px 20px;
+  background-color: #5E38BA; /* your chosen color */
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.icons-above-footer {
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  margin-bottom: 20px; /* Space above the footer */
+}
+
+.icon {
+  margin: 0 10px; /* Space between icons */
+  /* Add styles for the icons, such as size, color, etc. */
+}
+
+.footer {
+  background-color: #ffffff; 
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-section {
+  font-size: 16px;
+}
+
+.footer-section.my-songs {
+  color: #5E38BA;
+}
+
