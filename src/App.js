@@ -29,6 +29,10 @@ function App() {
           />
           {/* <Route path="/" element={<MyComponent buttonText="Twinkle Twinkle Little Star" />} /> */}
           <Route path="/sheetmusic" element={<LocalImageViewer apiResponse={apiResponse} setApiResponse={handleApiResponse}/>} />
+          <Route path="/MyProgress" element={<img src='/MyProgress.jpg'
+              alt="JPG Viewer"
+              style={{ width: '100%'}}
+              ></img>} />
         </Routes>
       </div>
     </Router>
