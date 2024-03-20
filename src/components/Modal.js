@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Modal.css';
 
 function groupConsecutiveNumbers(numbers) {
@@ -54,6 +54,23 @@ function getRandomSentence() {
 
 const Modal = ({ children, apiResponse }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [header, setHeader] = useState("");
+  const [sentence, setSentence] = useState("");
+  const [groupedNumbers, setGroupNumbers] = useState([]);
+  const [randSentences, setRandSentences] = useState([]);
+
+  useEffect(() => {
+    // Group consecutive numbers in the API response
+    const groupedNumbers = groupConsecutiveNumbers(apiResponse);
+    const { header, sentence } = getRandomSentenceWithHeader();
+
+    setHeader(header);
+    setSentence(sentence);
+    setGroupNumbers(groupedNumbers);
+
+    const generatedSentences = groupedNumbers.map(() => getRandomSentence());
+    setRandSentences(generatedSentences);
+  }, [apiResponse]);
 
   const handleScroll = (e) => {
     setScrollPosition(e.target.scrollTop);
@@ -65,19 +82,6 @@ const Modal = ({ children, apiResponse }) => {
     // Render custom message when API response is empty
     perfect = true;
   }
-
-    // Group consecutive numbers in the API response
-  const groupedNumbers = groupConsecutiveNumbers(apiResponse);
-  const { header, sentence } = getRandomSentenceWithHeader();
-  
-  // Generate cards content
-  const cardsContent = groupedNumbers.map((group, index) => (
-    <div key={index}>
-      <h3>Bar {group.length === 1 ? group[0] : `${group[0]} - ${group[group.length - 1]}`} : Correct your notes!</h3>
-      <h4>{getRandomSentence()}</h4>
-    </div>
-  ));
-  
 
   if(perfect){
     return(
@@ -97,9 +101,10 @@ const Modal = ({ children, apiResponse }) => {
         <h4>{sentence}</h4>
         {/* Card container with scrollable content */}
         <div className="card-container" onScroll={handleScroll}>
-          {cardsContent.map((card, index) => (
-            <div key={index} className="card">
-              {card}
+          {groupedNumbers.map((group, index) => (
+            <div key={index} className="card"> {/* Add 'card' class here */}
+              <h3>Bar {group.length === 1 ? group[0] : `${group[0]} - ${group[group.length - 1]}`} : Correct your notes!</h3>
+              <h4>{randSentences[index]}</h4>
             </div>
           ))}
         </div>
