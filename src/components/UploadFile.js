@@ -62,9 +62,10 @@ const UploadFile = ({setApiResponse}) => {
           padding: '8px 16px',
           border: 'none',
           cursor: 'pointer',
-          position: 'absolute',
+          position: 'fixed', // Position relative to the viewport
           bottom: '20px',
           right: '15px',
+          zIndex: 11, // Ensure it's above other elements
         }}
       >
         See how you did!
