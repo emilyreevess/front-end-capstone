@@ -42,6 +42,7 @@
     align-items: center; /* Align modal content to the bottom */
     background-color: white;
     z-index: 1000; /* Ensure it appears above other content */
+    min-height: 150px;
   }
   
   .modal-content {
@@ -51,6 +52,7 @@
     width: 100%; /* Set the width to 80% of the viewport width */
     max-width: none; /* Optional: Set a maximum width */
     height: auto; /* Allow the height to adjust based on content */
+    min-height: 100px;
     overflow-y: auto; /* Enable vertical scrolling if content overflows */
   }
   

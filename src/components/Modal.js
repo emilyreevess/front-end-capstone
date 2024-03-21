@@ -88,7 +88,7 @@ const Modal = ({ children, apiResponse }) => {
     return(
     <div className="modal-overlay">
       <div className="modal-content">
-        <h3>Perfection!</h3>
+        <h1>Perfection! ⭐⭐⭐⭐⭐</h1>
         <h4>Great job, you're a superstar!</h4>
       </div>
     </div>
