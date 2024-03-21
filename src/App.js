@@ -5,6 +5,7 @@ import LoginScreen from './components/LoginScreen.js'; // Import the LoginScreen
 import MainScreen from './components/MainScreen.js';
 import './App.css';
 import LocalImageViewer from './components/LocalImageViewer.js';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -30,10 +31,13 @@ function App() {
           {/* <Route path="/" element={<MyComponent buttonText="Twinkle Twinkle Little Star" />} /> */}
           <Route path="/sheetmusic" element={<LocalImageViewer apiResponse={apiResponse} setApiResponse={handleApiResponse}/>} />
           <Route path="/MainScreen" element={<MainScreen/>} />
-          <Route path="/MyProgress" element={<img src='/MyProgress.jpg'
+          <Route path="/MyProgress" element={<div style={{ position: 'relative' }}>
+            <Link to='/Mainscreen' type="button" class="btn btn-light" style={{ position: 'absolute', marginLeft: '20px', marginTop: '20px', width: '100px' }}>Back</Link>
+            <img src='/MyProgress.jpg'
               alt="JPG Viewer"
               style={{ width: '100%'}}
-              ></img>} />
+              ></img>
+          </div>} />
         </Routes>
       </div>
     </Router>
