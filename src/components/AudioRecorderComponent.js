@@ -84,7 +84,7 @@ const AudioRecorderComponent = ({apiResponse, setApiResponse}) => {
     <div>
       <div>
         <div style={{ width: '100%', textAlign: 'center'}}>
-          <button onClick={recording ? stopRecording : startRecording} style={{ borderRadius: recording ? '10px' : '30px', backgroundColor: recording ? "rgb(225, 96, 77)" : "rgb(225, 96, 77)", width: recording ? '30px' : '30px', height: recording ? '30px' : '30px', border: "none"}}>
+          <button onClick={recording ? stopRecording : startRecording} style={{ borderRadius: recording ? '10px' : '50px', backgroundColor: recording ? "rgb(225, 96, 77)" : "rgb(225, 96, 77)", width: recording ? '50px' : '50px', height: recording ? '50px' : '50px', border: "none"}}>
             {/* Empty string */}
           </button>
           {recording ? <LinearProgress style={{ width: '100%' }} /> : null}
